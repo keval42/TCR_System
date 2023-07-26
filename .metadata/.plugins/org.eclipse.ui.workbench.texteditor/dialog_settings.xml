@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="PERSON SE"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="person se"/>
+			<item value="getda"/>
+			<item value="officer&quot;"/>
+			<item value="officer"/>
+			<item value="fname"/>
+			<item value="test"/>
+			<item value="lblChargesText"/>
+			<item value="lblc"/>
+			<item value="txtcha"/>
+			<item value="event"/>
+			<item value="System.out.println"/>
+			<item value="click"/>
+			<item value="getva"/>
+			<item value="tableModel"/>
+			<item value="25"/>
+		</list>
+		<list key="replacehistory">
+			<item value="14"/>
+			<item value="Times New Roman"/>
+			<item value="tblRecentReports"/>
+			<item value="tblModel = new JTableModel();&#x0A;        tblMember = new JTable(tblModel);&#x0A;        tblMember.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);&#x0A;      &#x09;tblMember.setFillsViewportHeight(true);&#x0A;      &#x09;tblMember.setRowHeight(30);&#x0A;      &#x09;tblMember.removeEditor();&#x0A;      &#x09;Color color = Color.BLACK;&#x0A;      &#x09;MatteBorder border = new MatteBorder(1, 1, 1, 1, color);&#x0A;      &#x09;tblMember.setBorder(border);&#x0A;      &#x0A;      &#x09;JScrollPane scroll = new JScrollPane(tblMember);&#x0A;      &#x09;tblMember.setFillsViewportHeight(true);&#x09;&#x0A;&#x09;&#x09;&#x0A;&#x09;&#x09;TableCellRenderer buttonRenderer = new JTableButtonRenderer();&#x0A;&#x09;&#x09;tblMember.getColumn(&quot;View&quot;).setCellRenderer(buttonRenderer);&#x0A;&#x09;&#x09;tblMember.getColumn(&quot;Edit&quot;).setCellRenderer(buttonRenderer);&#x0A;&#x09;&#x09;tblMember.getColumn(&quot;Delete&quot;).setCellRenderer(buttonRenderer);&#x0A;&#x09;&#x09;tblMember.addMouseListener(new JTableButtonMouseListener(tblMember));&#x0A;&#x09;&#x09;&#x0A;&#x09;&#x09;scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);&#x0A;      &#x09;scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);&#x0A;      &#x0A;      &#x0A;       &#x09;scroll.setBounds(0, 100, 900, 500);&#x0A;        contentPane.add(scroll);"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="737"/>
+		<item key="DIALOG_Y_ORIGIN" value="261"/>
+		<item key="DIALOG_WIDTH" value="294"/>
+		<item key="DIALOG_HEIGHT" value="408"/>
+		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
+	</section>
+</section>

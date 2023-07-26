@@ -1,0 +1,220 @@
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+public class ReportDetails extends JFrame {
+	
+	public int userId;
+    private static final long serialVersionUID = 1L;
+    private JPanel contentPane;
+
+    /**
+     * Launch the application.
+     */
+    public static void main(String[] args) {
+
+    }
+
+    /**
+     * Create the frame.
+     */
+    public ReportDetails(int userId) {
+    	this.userId = userId;
+    	
+    	setBounds(450, 190, 920, 700);
+        setResizable(false);
+
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+
+        JLabel lblScreenTitle = new JLabel("Report Details", SwingConstants.CENTER);
+        lblScreenTitle.setForeground(Color.BLACK);
+        lblScreenTitle.setForeground(new Color(27,28,50));
+        
+        lblScreenTitle.setFont(new Font("Times New Roman", Font.BOLD, 35));
+        lblScreenTitle.setBounds(0, 10, 900, 100);
+        contentPane.add(lblScreenTitle);
+
+        JLabel fname = new JLabel("Title :");
+        fname.setBackground(Color.BLACK);
+        fname.setForeground(Color.BLACK);
+        fname.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        fname.setBounds(50, 100, 120, 50);
+        contentPane.add(fname);
+        
+        JLabel viewfName = new JLabel("View Title");
+        viewfName.setBackground(Color.BLACK);
+        viewfName.setForeground(Color.BLACK);
+        viewfName.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        viewfName.setBounds(200, 100, 150, 50);
+        contentPane.add(viewfName);
+        
+        JLabel lName = new JLabel("Incident:");
+        lName.setForeground(Color.BLACK);
+        lName.setBackground(Color.CYAN);
+        lName.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lName.setBounds(50, 170, 120, 50);
+        contentPane.add(lName);
+        
+        JLabel viewlName = new JLabel("Fine : ");
+        viewlName.setForeground(Color.BLACK);
+        viewlName.setBackground(Color.CYAN);
+        viewlName.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        viewlName.setBounds(200, 170, 150, 50);
+        contentPane.add(viewlName);
+        
+        JLabel lblEmail = new JLabel("Charges :");
+        lblEmail.setForeground(Color.BLACK);
+        lblEmail.setBackground(Color.CYAN);
+        lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblEmail.setBounds(50, 240, 120, 50);
+        
+        contentPane.add(lblEmail);
+        
+        JLabel viewEmail = new JLabel("Evidence");
+        viewEmail.setForeground(Color.BLACK);
+        viewEmail.setBackground(Color.CYAN);
+        viewEmail.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        viewEmail.setBounds(200, 240, 150, 50);
+        contentPane.add(viewEmail);
+        
+        JLabel lblPhone = new JLabel("Incident Officer :");
+        lblPhone.setForeground(Color.BLACK);
+        lblPhone.setBackground(Color.CYAN);
+        lblPhone.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblPhone.setBounds(50, 310, 120, 50);
+        contentPane.add(lblPhone);
+        
+        JLabel viewPhone = new JLabel("Created : ");
+        viewPhone.setForeground(Color.BLACK);
+        viewPhone.setBackground(Color.CYAN);
+        viewPhone.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        viewPhone.setBounds(200, 310, 120, 50);
+        contentPane.add(viewPhone);
+        
+        JLabel lblAddress = new JLabel("Address :");
+        lblAddress.setForeground(Color.BLACK);
+        lblAddress.setBackground(Color.CYAN);
+        lblAddress.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblAddress.setBounds(500, 100, 120, 50);
+        contentPane.add(lblAddress);
+        
+        
+        JLabel viewAddress = new JLabel("view Address");
+        viewAddress.setForeground(Color.BLACK);
+        viewAddress.setBackground(Color.CYAN);
+        viewAddress.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        viewAddress.setBounds(650, 100, 120, 50);
+        contentPane.add(viewAddress);
+        
+        
+        JLabel lblPincode = new JLabel("Pincode :");
+        lblPincode.setForeground(Color.BLACK);
+        lblPincode.setBackground(Color.CYAN);
+        lblPincode.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblPincode.setBounds(500, 170, 120, 50);
+        contentPane.add(lblPincode);
+        
+        JLabel viewPincode = new JLabel("View Pincode");
+        viewPincode.setForeground(Color.BLACK);
+        viewPincode.setBackground(Color.CYAN);
+        viewPincode.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        viewPincode.setBounds(650, 170, 120, 50);
+        contentPane.add(viewPincode);
+        
+        JLabel lblCity = new JLabel("City :");
+        lblCity.setForeground(Color.BLACK);
+        lblCity.setBackground(Color.CYAN);
+        lblCity.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblCity.setBounds(500, 240, 120, 50);
+        contentPane.add(lblCity);
+        
+        JLabel viewCity = new JLabel("view City");
+        viewCity.setForeground(Color.BLACK);
+        viewCity.setBackground(Color.CYAN);
+        viewCity.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        viewCity.setBounds(650, 240, 120, 50);
+        contentPane.add(viewCity);
+        
+        
+        JLabel lblProvince = new JLabel("Province :");
+        lblProvince.setForeground(Color.BLACK);
+        lblProvince.setBackground(Color.CYAN);
+        lblProvince.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblProvince.setBounds(500, 310, 120, 50);
+        contentPane.add(lblProvince);
+        
+        JLabel viewProvince = new JLabel("view Province");
+        viewProvince.setForeground(Color.BLACK);
+        viewProvince.setBackground(Color.CYAN);
+        viewProvince.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        viewProvince.setBounds(650, 310, 120, 50);
+        contentPane.add(viewProvince);
+        
+        JLabel lblCountry = new JLabel("Country :");
+        lblCountry.setForeground(Color.BLACK);
+        lblCountry.setBackground(Color.CYAN);
+        lblCountry.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblCountry.setBounds(500, 380, 120, 50);
+        contentPane.add(lblCountry);
+        
+        JLabel viewCountry = new JLabel("View Country");
+        viewCountry.setForeground(Color.BLACK);
+        viewCountry.setBackground(Color.CYAN);
+        viewCountry.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        viewCountry.setBounds(650, 380, 120, 50);
+        contentPane.add(viewCountry);
+        
+        try
+        { 
+        	Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/EARS?serverTimezone=UTC",
+                    "root", "Mahesh@123");
+        	
+        	String sql = "select * from users where `id` = ?";
+	        PreparedStatement ps = connection.prepareStatement(sql);
+	        ps.setInt(1, userId);
+	        ResultSet rs = ps.executeQuery();
+	        
+	        if(rs.next())
+	        {
+	        	String strFname = rs.getString("fname");
+	        	String strLname = rs.getString("lname");
+	        	String strEmail = rs.getString("email");
+	        	String strPhoneNo = rs.getString("phone_no");
+	        	String strAddress = rs.getString("address");
+	        	String strPincode = rs.getString("pincode");
+	        	String strCity = rs.getString("city");
+	        	String strProvince = rs.getString("province");
+	        	String strCountry = rs.getString("country");
+	        	
+	        	viewfName.setText(strFname);
+	        	viewlName.setText(strLname);
+	        	viewEmail.setText(strEmail);
+	        	viewPhone.setText(strPhoneNo);
+	        	viewAddress.setText(strAddress);
+	        	viewPincode.setText(strPincode);
+	        	viewCity.setText(strCity);
+	        	viewProvince.setText(strProvince);
+	        	viewCountry.setText(strCountry);
+	        }
+        }
+        catch(Exception ex)
+        {
+        	JOptionPane.showMessageDialog(null, ex.getMessage(),"Error",
+        			JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}

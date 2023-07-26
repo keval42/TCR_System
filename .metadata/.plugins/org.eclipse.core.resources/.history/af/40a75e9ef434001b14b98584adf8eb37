@@ -1,0 +1,18 @@
+
+public class ReportModel {
+	private int id;
+	private String title;
+	private String details;
+	private String incident;
+	private String image;
+	private String fine;
+	private String charges;
+	private String evidence;
+	private String incidentOfficer;
+	private int getId() {
+		return id;
+	}
+	private void setId(int id) {
+		this.id = id;
+	}
+}

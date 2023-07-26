@@ -1,0 +1,155 @@
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.prefs.Preferences;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+public class LoginScreen extends JFrame {
+
+	private Preferences prefs;
+
+    private static final long serialVersionUID = 1L;
+    
+    private JTextField txtEmail;
+    private JPasswordField txtPassword;
+    
+    private JButton btnLogin;
+    private JPanel contentPane;
+
+    /**
+     * Launch the application.
+     */
+    
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    LoginScreen frame = new Screen();
+                    frame.setVisible(true);
+                    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                    frame.setLocation(dim.width/2- frame.getSize().width/2, dim.height/2 - frame.getSize().height/2);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    /**
+     * Create the frame.
+     */
+    
+    public Screen() {
+ 
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(450, 190, 900, 500);
+        setResizable(false);
+        
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+
+        JLabel lblNewLabel = new JLabel("Employment Application Review System", SwingConstants.CENTER);
+        lblNewLabel.setForeground(Color.BLACK);
+        lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 35));
+        lblNewLabel.setBounds(0, 10, 900, 100);
+        contentPane.add(lblNewLabel);
+
+        JLabel lblemail = new JLabel("Email");
+        lblemail.setBackground(Color.BLACK);
+        lblemail.setForeground(Color.BLACK);
+        lblemail.setFont(new Font("Tahoma", Font.PLAIN, 25));
+        lblemail.setBounds(250, 150, 120, 50);
+        contentPane.add(lblemail);
+        
+
+        JLabel lblPassword = new JLabel("Password");
+        lblPassword.setForeground(Color.BLACK);
+        lblPassword.setBackground(Color.CYAN);
+        lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 25));
+        lblPassword.setBounds(250, 220, 120, 50);
+        contentPane.add(lblPassword);
+        
+        txtEmail = new JTextField();
+        txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 25));
+        txtEmail.setBounds(400, 150, 300, 50);
+        contentPane.add(txtEmail);
+        txtEmail.setColumns(10);
+
+        txtPassword = new JPasswordField();
+        txtPassword.setFont(new Font("Tahoma", Font.PLAIN, 25));
+        txtPassword.setBounds(400, 220, 300, 50);
+        contentPane.add(txtPassword);
+
+        btnLogin = new JButton("Login");
+        btnLogin.setFont(new Font("Tahoma", Font.BOLD, 25));
+        btnLogin.setBounds(450, 300, 200, 50);
+        
+        btnLogin.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                String userName = txtEmail.getText();
+                String password = txtPassword.getText();
+                try {
+                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/EARS?serverTimezone=UTC",
+                        "root", "Mahesh@123");
+
+                    PreparedStatement st = (PreparedStatement) connection
+                        .prepareStatement("Select admin_id from admin where email=? and password=?");
+
+                    st.setString(1, userName);
+                    
+                    st.setString(2, MD5.getMd5(password));
+                    
+                    ResultSet rs = st.executeQuery();
+                    
+                    if (rs.next()) {
+                        int adminID = rs.getInt(1);
+                        prefs = Preferences.userNodeForPackage(this.getClass());
+                        System.out.println("admin ID: "+adminID);
+                        prefs.putInt("adminID", adminID);
+                        
+                        int newadminID = prefs.getInt("adminID", 0);
+                        System.out.println("admin ID from preferences : "+newadminID);
+                        
+                        dispose();
+                        
+//                        Screen ah = new Screen();
+//                        ah.setTitle("Admin Dashboard");
+//                        ah.setVisible(true);
+//                        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+//                        ah.setLocation(dim.width/2- ah.getSize().width/2, dim.height/2 - ah.getSize().height/2);
+//                        JOptionPane.showMessageDialog(btnLogin, "You have successfully logged in");
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(btnLogin, "Wrong Username or Password");
+                    }
+                } catch (SQLException sqlException) {
+                    sqlException.printStackTrace();
+                }
+            }
+        });
+
+        contentPane.add(btnLogin);
+    }
+}

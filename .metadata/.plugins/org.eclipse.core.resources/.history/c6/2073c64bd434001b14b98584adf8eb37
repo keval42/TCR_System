@@ -1,0 +1,21 @@
+import javax.swing.JFrame;
+
+public class LoginScreen {
+
+	JFrame jf;
+	public First() {
+		jf = new JFrame("MyWindow");            //Creating a JFrame with name MyWindow
+		JButton btn = new JButton("Say Hello");//Creating a Button named Say Hello
+		jf.add(btn);                            //adding button to frame
+		jf.setLayout(new FlowLayout());        //setting layout using FlowLayout object
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);      //setting close  operation.
+		jf.setSize(400, 400);                   //setting size
+		jf.setVisible(true);                    //setting frame visibility
+	}
+	
+	public static void main(String[] args)
+	{
+		new First();
+	}
+
+}

@@ -1,0 +1,8 @@
+
+public class TrafficInfraction {
+	private int id;
+	private String title;
+	private String fine_amount;
+	private String punishment;
+	private String created;
+}

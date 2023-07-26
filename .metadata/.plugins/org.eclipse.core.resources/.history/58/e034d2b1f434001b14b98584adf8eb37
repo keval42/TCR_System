@@ -1,0 +1,43 @@
+
+public class ReportModel {
+	private int id;
+	private String title;
+	private String details;
+	private String incident;
+	private String image;
+	private String fine;
+	private String charges;
+	private String evidence;
+	private String incidentOfficer;
+	
+	private int getId() {
+		return id;
+	}
+	private void setId(int id) {
+		this.id = id;
+	}
+	private String getTitle() {
+		return title;
+	}
+	private void setTitle(String title) {
+		this.title = title;
+	}
+	private String getDetails() {
+		return details;
+	}
+	private void setDetails(String details) {
+		this.details = details;
+	}
+	private String getIncident() {
+		return incident;
+	}
+	private void setIncident(String incident) {
+		this.incident = incident;
+	}
+	private String getImage() {
+		return image;
+	}
+	private void setImage(String image) {
+		this.image = image;
+	}
+}
